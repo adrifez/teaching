@@ -1,0 +1,14 @@
+{
+  "name": "web-dinamica-tests",
+  "version": "1.0.0",
+  "description": "Batería de tests para evaluar entregas según la rúbrica",
+  "scripts": {
+    "test": "node node_modules/jest/bin/jest.js",
+    "evaluar-entregas": "node evaluar-entregas-alumnos.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^24.0.0"
+  }
+}

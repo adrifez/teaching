@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de tareas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="contenedor">
+    <header>
+      <h1>Mi lista de tareas</h1>
+    </header>
+
+    <section class="añadir-tarea">
+      <!-- TODO: Añadir id="formulario-tarea" al form. El script lo obtendrá con getElementById para escuchar el evento submit. -->
+      <form aria-label="Añadir nueva tarea">
+        <!-- TODO: Añadir id="input-tarea" al input. El script leerá su value al añadir una tarea. -->
+        <input
+          type="text"
+          placeholder="Escribe una tarea..."
+          autocomplete="off"
+          aria-label="Texto de la tarea"
+        >
+        <!-- TODO: Añadir id="boton-añadir" al botón (opcional: el envío se captura en el form con submit). -->
+        <button type="submit">Añadir</button>
+      </form>
+    </section>
+
+    <section class="lista-tareas">
+      <!-- TODO: Añadir id="lista-tareas" al ul. El script añadirá aquí cada <li> con createElement y appendChild. -->
+      <ul aria-label="Lista de tareas"></ul>
+    </section>
+  </div>
+
+  <!-- TODO: Enlazar el archivo script.js con <script src="script.js"></script> para que se ejecute el JavaScript. -->
+</body>
+</html>

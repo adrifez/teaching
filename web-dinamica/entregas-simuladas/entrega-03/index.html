@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de tareas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="contenedor">
+    <header>
+      <h1>Mi lista de tareas</h1>
+    </header>
+
+    <section class="añadir-tarea">
+      <form id="formulario-tarea" aria-label="Añadir nueva tarea">
+        <input
+          type="text"
+          id="input-tarea"
+          placeholder="Escribe una tarea..."
+          autocomplete="off"
+          aria-label="Texto de la tarea"
+        >
+        <button type="submit" id="boton-añadir">Añadir</button>
+      </form>
+    </section>
+
+    <section class="lista-tareas">
+      <ul id="lista-tareas" aria-label="Lista de tareas"></ul>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

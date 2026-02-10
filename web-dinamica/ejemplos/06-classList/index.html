@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo 06 - classList (marcar como hecha)</title>
+  <style>
+    .tarea { padding: 0.5rem; margin: 0.25rem 0; border: 1px solid #ddd; border-radius: 4px; }
+    .tarea.hecha { text-decoration: line-through; color: #888; background: #f0f0f0; }
+  </style>
+</head>
+<body>
+  <h1>classList: añadir y quitar clases</h1>
+  <p>Pulsa sobre una tarea para marcarla como hecha o desmarcarla. Se usa <code>classList.toggle('hecha')</code>.</p>
+  <div id="tarea1" class="tarea">Comprar leche</div>
+  <div id="tarea2" class="tarea">Estudiar JavaScript</div>
+  <div id="tarea3" class="tarea">Hacer la actividad</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
