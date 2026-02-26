@@ -1,5 +1,8 @@
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        REPO_URL: ${REPO_URL:-https://github.com/pbarrabes/DWEC_25_26.git}
     ports:
       - "8080:80"
