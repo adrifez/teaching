@@ -8,8 +8,10 @@ This project runs a web server in a Docker container that serves the contents of
 
 ```bash
 docker build -t dwec-server .
-docker run -p 8080:80 dwec-server
+docker run -d -p 8080:80 dwec-server
 ```
+
+Use `-d` so the container runs in the background and does not exit when the terminal is resized (SIGWINCH). To stop it: `docker stop <container_id>`.
 
 **With Docker Compose:**
 
