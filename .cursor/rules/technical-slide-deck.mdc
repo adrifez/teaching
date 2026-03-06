@@ -1,0 +1,174 @@
+---
+alwaysApply: false
+description: "When creating technical slide presentations (OOP, cloud, fullstack...) with intro + practical examples and an examples folder."
+---
+
+# Technical slide deck rule
+
+Use this rule when the task is to create or edit a **technical-topic slide deck** that has short intro per concept, code snippets on slides, and full runnable examples in a numbered folder (e.g. like the JavaScript web-dinámica deck).
+
+Reference deck: [projects/generated_slides/web_dinamica_javascript.md](projects/generated_slides/web_dinamica_javascript.md).
+
+---
+
+## 1. Before you start: ask these questions (pragmatic)
+
+**Ask only what the user has not already specified.** Once you have the answers you need, generate the deck and/or examples. Do not invent defaults for language or audience — if missing, ask.
+
+1. **Topic / title** — What is the presentation about? (e.g. "OOP in Python", "Web dinámica con JavaScript")
+2. **Audience / level** — Who is it for? (e.g. students SMR1, developers)
+3. **Language** — In which language should the slides and speaker notes be? (e.g. Spanish, English)
+4. **Duration** — Approximate length? (e.g. 35 min)
+5. **How examples run** — How will attendees run the examples? (e.g. open `index.html` in browser, run `python main.py`)
+6. **Outline** — Does the user provide a section/outline or should you propose one from the topic?
+7. **Slide output path** — Where to write the generated Slidev markdown? (default: `projects/generated_slides/<topic>.md`)
+8. **Examples path** — Where do the numbered example folders live? (default: `projects/supporting_materials/<topic>/ejemplos/`)
+
+Optional: **Stack / theme** — Any tech stack or theme preference (e.g. Vue, React, light-only).
+
+---
+
+## 2. Default paths (after project restructure)
+
+- **Generated slide file:** `projects/generated_slides/<topic>.md` (e.g. `web_dinamica_javascript.md`).
+- **Supporting materials and examples:** `projects/supporting_materials/<topic>/ejemplos/` with numbered folders `01-nombre-concepto`, `02-...`.
+
+The user can override these when answering the questions above.
+
+---
+
+## 3. Slidev format and style
+
+### Title slide (first slide)
+
+- **Background:** Dark (`#1a1a1a`), **text:** white (`#ffffff`).
+- **Content:** Title (h1) and subtitle (h2) only — no "Presiona Espacio" or similar.
+- **Style block** on the title slide to enforce white headings and fast transitions, and to define theme-aware callout/preview styles:
+
+```html
+<style>
+:global(:root) {
+  --slidev-transition-duration: 0.2s;
+}
+.slidev-layout h1,
+.slidev-layout h2 { color: #ffffff !important; }
+
+/* Theme-aware callout and preview boxes (avoid hardcoded #1e1e1e / #2d2d2d in content) */
+.slidev-layout .slide-callout {
+  background-color: #2d2d2d;
+  color: #fff;
+}
+.slidev-layout .slide-preview-box {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+/* Light mode overrides */
+html:not(.dark) .slidev-layout .slide-callout {
+  background-color: #e5e7eb;
+  color: #1a1a1a;
+}
+html:not(.dark) .slidev-layout .slide-preview-box {
+  background-color: #f4f4f5;
+  color: #1a1a1a;
+  border-color: #e5e7eb;
+}
+</style>
+```
+
+Use classes `slide-callout` and `slide-preview-box` in the slide content instead of inline `bg-[#2d2d2d]` / `bg-[#1e1e1e]`.
+
+### Transitions
+
+- **Direction:** `slide-right` or `slide-left` (new slide enters in that direction).
+- **Speed:** Fast — `--slidev-transition-duration: 0.2s` in `:root` (see style block).
+- Set `transition: slide-right` (or slide-left) in frontmatter.
+
+### Callout and preview boxes
+
+- Use **theme-aware classes** so light/dark mode works: `slide-callout` for highlight/callout blocks, `slide-preview-box` for code-preview or small demo areas.
+- Example: `<div class="mt-6 p-4 rounded-lg slide-callout text-left">...</div>` and `<div class="slide-preview-box rounded-lg p-4">...</div>`.
+- Do not hardcode `#1e1e1e` or `#2d2d2d` in slide content; rely on the style block above.
+
+### Content slides
+
+- Use `layout: default` for normal content.
+- Use `layout: section` with `class: text-center` for section dividers.
+- Do not set a background on content slides unless needed; let the theme apply its default.
+
+### Frontmatter default
+
+```yaml
+---
+theme: seriph
+background: '#1a1a1a'   # only on title slide
+class: text-center
+transition: slide-right
+mdc: true
+title: Your Presentation Title
+info: |
+  ## Subtitle or short description
+duration: 35min
+---
+```
+
+### Layouts and typography
+
+- Use `layout: two-cols` or a custom class like `slide-two-cols` for code + preview side-by-side (see reference deck).
+- Clear font sizes (min 24px for body), sans-serif, consistent spacing (UnoCSS utilities).
+- Code: syntax highlighting, monospace, concise snippets.
+
+### Optional light palette
+
+For full light theme: backgrounds #FFFFFF / #F4F5F7, accents #EDF6FE, #84C1FA, text #1a1a1a. The style block overrides above already adapt callouts for light mode.
+
+---
+
+## 4. Deck structure
+
+Mirror the reference [projects/generated_slides/web_dinamica_javascript.md](projects/generated_slides/web_dinamica_javascript.md):
+
+1. **Title slide** — Dark background, title + subtitle, style block (including .slide-callout / .slide-preview-box and transition).
+2. **Agenda** — "Estructura de la presentación" (or equivalent in the deck language) with numbered list of sections.
+3. **Optional: "Cómo usar los ejemplos"** — Include when there are numbered example folders and it adds value: table listing each `NN-name` and the concept it illustrates; short note on how to run (e.g. open index.html).
+4. **Per section:**  
+   - Section divider: `layout: section`, `class: text-center`, big section title.  
+   - Concept slide(s): bullets and/or short text; use `slide-callout` for key points.  
+   - Code snippet on slide; use `slide-preview-box` for small previews if needed.  
+   - Footer line: **"Ejemplo completo:"** `NN-name` (e.g. `<div class="absolute bottom-6 left-12 right-12 text-sm opacity-90"><strong>Ejemplo completo:</strong> <code>01-incluir-script</code></div>`).
+5. **Optional two-column slides** — Code on one side, preview on the other (e.g. `class: slide-two-cols`).
+6. **Closing** — Recursos (and optional Validaciones or similar), then thank-you / Q&A.
+
+Section numbering: use a consistent style (e.g. `# 1. SECTION NAME`, `# 2. ...`).
+
+---
+
+## 5. Examples folder
+
+- **Location:** Under the agreed path (default: `projects/supporting_materials/<topic>/ejemplos/`).
+- **Naming:** Numbered folders, lowercase, hyphenated: `01-incluir-script`, `02-acceso-dom`, etc.
+- **Content:** Each folder = full runnable code (e.g. `index.html` + `script.js`, or `main.py`). The slide shows only a short blurb; reference the folder name exactly in the "Ejemplo completo: `NN-name`" footer.
+- **Table-of-examples slide** — Optional; include when it helps (e.g. "Cómo usar los ejemplos" with a table of folder → concept).
+
+---
+
+## 6. Consistency
+
+- **Section numbering** — Use the same pattern throughout (e.g. `# 1. SECTION`).
+- **Escaping** — In prose, escape `<tag>` as `&lt;tag&gt;` or use backticks/code to avoid Vue/HTML parsing issues.
+- **Reference** — When in doubt, match the structure and style of [projects/generated_slides/web_dinamica_javascript.md](projects/generated_slides/web_dinamica_javascript.md).
+
+---
+
+## 7. PDF export after generating the slide markdown
+
+Once the markdown file containing the slides has been generated (or updated in a way that warrants a new export):
+
+1. **Ask the user:** "Do you want the PDF exported in **light** or **dark** theme?"
+2. **Export to PDF** from the repo root:
+   - **Output path:** same directory as the `.md` file, same base name with `.pdf` (e.g. `projects/generated_slides/<topic>.pdf`).
+   - **Command:** `npx slidev export <path-to-md> --output <path-to-pdf>`  
+     Add `--dark` only if the user chose dark theme.
+   - Example (dark): `npx slidev export projects/generated_slides/web_dinamica.md --output projects/generated_slides/web_dinamica.pdf --dark`  
+   - Example (light): `npx slidev export projects/generated_slides/web_dinamica.md --output projects/generated_slides/web_dinamica.pdf`
+3. Tell the user where the PDF was saved. If the export fails (e.g. Playwright/Chromium in sandbox), suggest running the command locally or using the Slidev browser exporter.
