@@ -2,6 +2,9 @@
   "name": "slides",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": "^22.12.0"
+  },
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
@@ -18,5 +21,8 @@
     "md-to-pdf": "^5.2.5",
     "playwright": "^1.49.0",
     "playwright-chromium": "^1.58.2"
+  },
+  "overrides": {
+    "dompurify": "^3.3.2"
   }
 }
