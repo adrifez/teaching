@@ -4,5 +4,12 @@ node_modules/
 # MacOS
 .DS_Store
 
-# Generated pdfs
+# Slidev
+*.local
+.vite-inspect
+.remote-assets
+components.d.ts
+
+# Generated resources
 *.pdf
+*.zip
