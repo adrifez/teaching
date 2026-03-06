@@ -10,6 +10,11 @@ node_modules/
 .remote-assets
 components.d.ts
 
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
 # Generated resources
 *.pdf
 *.zip
