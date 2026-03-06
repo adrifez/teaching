@@ -6,11 +6,21 @@ Welcome to your Slidev presentation project! This project is set up to generate 
 
 To start the slide show:
 
-- `npm install` (already done)
+- `npm install` — installs dependencies and **Playwright Chromium** (used for PDF export; first run may take a minute)
 - `npm run dev`
 - visit <http://localhost:3030>
 
 Edit the [slides.md](./slides.md) to see the changes.
+
+### PDF export
+
+To export a deck to PDF (e.g. dark theme):
+
+```bash
+npx slidev export projects/generated_slides/<deck>.md --output projects/generated_slides/<deck>.pdf --dark
+```
+
+Playwright Chromium is installed automatically via the `postinstall` script so export works after `npm install`.
 
 ## Cursor Rules
 

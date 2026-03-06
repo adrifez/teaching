@@ -5,7 +5,8 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export",
+    "postinstall": "npx playwright install chromium"
   },
   "dependencies": {
     "@slidev/cli": "^52.9.1",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "md-to-pdf": "^5.2.5",
+    "playwright": "^1.49.0",
     "playwright-chromium": "^1.58.2"
   }
 }
