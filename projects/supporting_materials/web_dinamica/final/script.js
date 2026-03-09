@@ -16,37 +16,35 @@ function añadirTarea(texto) {
   if (!texto || !texto.trim()) return;
 
   const li = document.createElement('li');
-  li.setAttribute('data-tarea', texto.trim());
+  listaTareas.appendChild(li);
 
   const span = document.createElement('span');
   span.className = 'texto-tarea';
   span.textContent = texto.trim();
+  li.appendChild(span);
 
   const botonMarcar = document.createElement('button');
   botonMarcar.type = 'button';
   botonMarcar.className = 'boton-marcar';
   botonMarcar.textContent = 'Hecha';
-  botonMarcar.setAttribute('aria-label', 'Marcar como hecha');
-
-  const botonEliminar = document.createElement('button');
-  botonEliminar.type = 'button';
-  botonEliminar.className = 'boton-eliminar';
-  botonEliminar.textContent = 'Eliminar';
-  botonEliminar.setAttribute('aria-label', 'Eliminar tarea');
 
   botonMarcar.addEventListener('click', function () {
     li.classList.toggle('hecha');
     botonMarcar.textContent = li.classList.contains('hecha') ? 'Deshacer' : 'Hecha';
   });
 
+  li.appendChild(botonMarcar);
+
+  const botonEliminar = document.createElement('button');
+  botonEliminar.type = 'button';
+  botonEliminar.className = 'boton-eliminar';
+  botonEliminar.textContent = 'Eliminar';
+
   botonEliminar.addEventListener('click', function () {
-    //li.remove();
+    listaTareas.removeChild(li);
   });
 
-  li.appendChild(span);
-  li.appendChild(botonMarcar);
   li.appendChild(botonEliminar);
-  listaTareas.appendChild(li);
 }
 
 // Evitar que el formulario recargue la página y añadir la tarea al enviar
