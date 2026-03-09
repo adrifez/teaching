@@ -44,16 +44,16 @@ Enviar la carpeta comprimida (ZIP) a través de Educamos.
 
 Ejemplo de archivo de entrega: **web_dinamica_FernandezAmador_Adrian.zip**
 
----
+<div style="page-break-before: always;"></div>
 
 ## Criterios de puntuación
 
 La práctica se valora sobre **10 puntos**:
 
-- **HTML (2 pts).** Enlace a `script.js` y los `id` necesarios en el formulario, input, botón y lista (`formulario-tarea`, `input-tarea`, `boton-añadir`, `lista-tareas`).
-- **Formulario y eventos (2 pts).** Listener `submit` con `preventDefault()` y llamada a `añadirTarea` con el valor del input; la página no recarga al enviar.
-- **Añadir tarea (2 pts).** No añadir tareas vacías (validar con `trim`); crear `li`, `span` y botones con `createElement`/`appendChild` y mostrarlos en la lista.
-- **Marcar hecha / deshacer (2 pts).** Botón "Hecha" con listener que alterne la clase `hecha` en el `li` (`classList.toggle`) y cambie el texto del botón a "Deshacer" o "Hecha".
-- **Eliminar tarea (2 pts).** Botón "Eliminar" con listener que quite el `li` de la lista (`remove`).
+- **HTML (2 pts).** Enlace a `script.js` y los `id` necesarios en el formulario, input, botón y lista.
+- **Formulario y eventos (2 pts).** Llamada a `añadirTarea` con el valor del input; la página no recarga al enviar.
+- **Añadir tarea (2 pts).** No añadir tareas vacías; crear `li`, `span` y botones; mostrarlos en la lista.
+- **Marcar hecha / deshacer (2 pts).** Botón "Hecha" con listener que alterne la clase `hecha` del `li` y cambie el texto del botón a "Deshacer" o "Hecha".
+- **Eliminar tarea (2 pts).** Botón "Eliminar" con listener que quite el `li` de la lista.
 
 
