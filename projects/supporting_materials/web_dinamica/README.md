@@ -38,6 +38,8 @@ Abre en el navegador:
 
 - `final/index.html` — lista de tareas completa.
 
+Si el repositorio tiene GitHub Pages configurado, la versión de **final** se publica automáticamente en cada push. La URL será `https://<owner>.github.io/<repo>/` (sustituye `<owner>` y `<repo>` por el usuario/org y el nombre del repositorio). En el repo, Settings → Pages → Source debe estar en **GitHub Actions**.
+
 ### Evaluar entregas de alumnos de forma automática
 
 1. Coloca cada entrega en una **subcarpeta** dentro de `entregas-alumnos/`, por ejemplo:
