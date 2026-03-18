@@ -26,6 +26,16 @@ header h1 {
   color: #333;
 }
 
+.contador-tareas {
+  margin: -0.5rem 0 1rem 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.contador-tareas strong {
+  color: #333;
+}
+
 .añadir-tarea {
   margin-bottom: 1.5rem;
 }

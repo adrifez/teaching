@@ -7,6 +7,33 @@
 const formulario = document.getElementById('formulario-tarea');
 const inputTarea = document.getElementById('input-tarea');
 const listaTareas = document.getElementById('lista-tareas');
+const contadorTareas = document.getElementById('contador-tareas');
+
+/**
+ * Actualiza el texto del contador de tareas.
+ * Cuenta cuántas tareas hay en total, cuántas están hechas y cuántas pendientes.
+ */
+function actualizarContador() {
+  const total = listaTareas.children.length;
+  const hechas = listaTareas.querySelectorAll('li.hecha').length;
+  const pendientes = total - hechas;
+
+  if (!contadorTareas) return;
+
+  if (total === 0) {
+    contadorTareas.textContent = '0 tareas';
+    return;
+  }
+
+  contadorTareas.innerHTML =
+    '<strong>' +
+    total +
+    '</strong> tareas — <strong>' +
+    pendientes +
+    '</strong> pendientes, <strong>' +
+    hechas +
+    '</strong> hechas';
+}
 
 /**
  * Añade una nueva tarea a la lista.
@@ -31,6 +58,7 @@ function añadirTarea(texto) {
   botonMarcar.addEventListener('click', function () {
     li.classList.toggle('hecha');
     botonMarcar.textContent = li.classList.contains('hecha') ? 'Deshacer' : 'Hecha';
+    actualizarContador();
   });
 
   li.appendChild(botonMarcar);
@@ -42,9 +70,12 @@ function añadirTarea(texto) {
 
   botonEliminar.addEventListener('click', function () {
     listaTareas.removeChild(li);
+    actualizarContador();
   });
 
   li.appendChild(botonEliminar);
+
+  actualizarContador();
 }
 
 // Evitar que el formulario recargue la página y añadir la tarea al enviar
@@ -54,3 +85,6 @@ formulario.addEventListener('submit', function (evento) {
   inputTarea.value = '';
   inputTarea.focus();
 });
+
+// Estado inicial del contador (por si hubiese tareas renderizadas en HTML)
+actualizarContador();
